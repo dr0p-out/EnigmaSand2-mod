@@ -262,10 +262,12 @@ drawLine(mouseX, mouseY, pmouseX, pmouseY, menu_values[0][menu_count[0]]);
 
 
 	for(int i=0; i<menu_count[5]; i++){
+#if 0
 spigot(SAND, 4, 1, 15, 5*menu_values[1][menu_count[1]]);
 spigot(WATER, 4, 2, 15, 5*menu_values[2][menu_count[2]]);
 spigot(SALT, 4, 3, 15, 5*menu_values[3][menu_count[3]]);
 spigot(OIL, 4, 4, 15, 5*menu_values[4][menu_count[4]]);
+#endif
 
     setColor(WALL);
     drawLine(0, 0, 0, height, 1);
