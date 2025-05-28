@@ -16,7 +16,7 @@ bool quit;
 bool first=true;
 bool rescon=false;
 Uint32 color=0xff000000;
-SDL_Color sdlcolor={0, 0, 0};
+SDL_Color sdlcolor={0, 0, 0, 0};
 int targetrate=1000;
 bool capframe=true;
 int searchcount=0;
