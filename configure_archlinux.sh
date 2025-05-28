@@ -1,0 +1,3 @@
+#!/bin/bash
+
+PKG_CONFIG='i686-pc-linux-gnu-pkg-config' cmake -DCMAKE_CXX_FLAGS:STRING=-m32 -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=ON "$@"
