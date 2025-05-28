@@ -15,9 +15,9 @@
 #include "EnigmaSandParticle.h"
 
 
- SDL_Surface* viewer=NULL;
- SDL_Surface* screen=NULL;
- SDL_Surface* drawingsurface=NULL;
+ SDL_Surface* viewer=nullptr;
+ SDL_Surface* screen=nullptr;
+ SDL_Surface* drawingsurface=nullptr;
 
 TTF_Font *font;
 Uint16 mouseX, mouseY;
@@ -138,7 +138,7 @@ atexit(SDL_Quit);
     vwidth=viewer->w;
     vheight=viewer->h;
     mheight=vheight-80;
-    srand((unsigned)time( NULL ) );
+    srand((unsigned)time( nullptr ) );
 
 
 
@@ -161,7 +161,7 @@ destin.y=0;
 destin.w=vwidth;
 destin.h=mheight;
 
-//SDL_BlitSurface(screen, &destin, viewer,NULL);
+//SDL_BlitSurface(screen, &destin, viewer,nullptr);
 drawingsurface=viewer;
 if(width!=vwidth){
     int scaler=vwidth/width;
@@ -170,7 +170,7 @@ for(int i=0; i<width*height; i++){
     fillRect( (i%width)*scaler, (i/width)*scaler, scaler, scaler);
 }
 }else{
-  SDL_BlitSurface(screen, &destin, viewer,NULL);
+  SDL_BlitSurface(screen, &destin, viewer,nullptr);
 }
 drawingsurface=screen;
 #endif
@@ -785,7 +785,7 @@ void drawLine(int x1, int y1, int x2, int y2){
 drawLine(x1, y1, x2, y2, 0);
 }
 
-  void apply_surface( int x, int y, SDL_Surface* source, SDL_Surface* destination, SDL_Rect* clip = NULL ){
+  void apply_surface( int x, int y, SDL_Surface* source, SDL_Surface* destination, SDL_Rect* clip = nullptr ){
     //Holds offsets
     SDL_Rect offset;
 
@@ -817,7 +817,7 @@ void drawString(const char* utf, int x, int y){
       SDL_Surface* message;
 
       message=TTF_RenderText_Solid(font, utf, sdlcolor);
-      if(message==NULL){ printf("image not created"); return;}
+      if(message==nullptr){ printf("image not created"); return;}
     apply_surface(x, y, message, drawingsurface);
           SDL_FreeSurface(message);
 }
