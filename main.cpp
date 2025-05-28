@@ -727,7 +727,7 @@ void fillCirc(int xpos, int ypos, int radius){
 }
 
 
-void drawString(char* utf, int x, int y){
+void drawString(const char* utf, int x, int y){
       message=TTF_RenderText_Solid(font, utf, sdlcolor);
       if(message==NULL){ printf("image not created");}
     apply_surface(x, y, message, drawingsurface);
