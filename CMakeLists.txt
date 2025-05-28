@@ -15,6 +15,7 @@ find_package(SDL REQUIRED)
 find_package(SDL_ttf REQUIRED)
 
 add_executable(EnigmaSand
+  EnigmaSandParticle.cpp
   main.cpp)
 target_include_directories(EnigmaSand PRIVATE
   ${SDL_INCLUDE_DIR}

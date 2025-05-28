@@ -10,9 +10,90 @@
 #include <ctime>
 #include <SDL.h>
 #include <SDL_ttf.h>
-#include "EnigmaSand2.h"
+//#include "EnigmaSand2.h"
 #include "EnigmaSandDefs.h"
 #include "EnigmaSandParticle.h"
+
+
+ SDL_Surface* viewer=NULL;
+ SDL_Surface* screen=NULL;
+ SDL_Surface* drawingsurface=NULL;
+
+TTF_Font *font;
+Uint16 mouseX, mouseY;
+Uint16 pmouseX, pmouseY;
+Uint16 width, height, sheight;
+Uint16 vwidth, vheight, mheight;
+bool mousePressed;
+bool pmousePressed;
+bool quit;
+bool first=true;
+bool rescon=false;
+Uint32 color=0xff000000;
+SDL_Color sdlcolor={0, 0, 0, 0};
+int targetrate=1000;
+bool capframe=true;
+int searchcount=0;
+
+    int pen_type=0;
+
+
+    int resource_n=17;
+    const char *resource_text []={
+     "WALL", "FIRE", "WATER", "PLANT", "SAND", "SALT","WAX","OIL",
+     "SPOUT", "METHANE", "NITRO", "NAPALM", "GUNPOWDER","C-4", "TORCH","CONCRETE","ERASER"
+    };
+    int resource_color []={
+    WALL, FIRE, WATER, PLANT, SAND, SALT, CERA, OIL, SPOUT, METH, NITRO, NAPA,  GUNP,C4,TORCH, CONC, BLANK
+    };
+    const char *menu_text []={
+      "PEN-size: x", "SAND: x", "WATER: x", "SALT: x",
+      "OIL: x", "Time: x",  "Ground On: ", "XavierSoft: "
+    };
+
+#ifdef RESCON
+int menu_n=10;
+#else
+    int menu_n=8;
+    #endif
+    int menu_values [][7]={
+     {1, 2, 4, 8, 16, 24, 32},
+     {0, 1, 2, 3, 4, 5},
+     {0, 1, 2, 3, 4, 5},
+     {0, 1, 2, 3, 4, 5},
+     {0, 1, 2, 3 ,4 , 5},
+     {0, 1, 2, 3, 4},
+     {0, 1},
+     {0}
+      #ifdef RESCON
+      ,
+     {320, 640},
+     {640,1280},
+     #endif
+    };
+
+    int resheights []={200, 400};
+    int sizheights []={480, 880};
+
+     const char *menu_val_text [][7]={
+     {"PEN-size: x1", "PEN-size: x2", "PEN-size: x4", "PEN-size: x8", "PEN-size: x16", "PEN-size: x24", "PEN-size: x32"},
+     {"SAND: x0", "SAND: x1", "SAND: x2", "SAND: x3", "SAND: x4", "SAND: x5"},
+     {"WATER: x0", "WATER: x1", "WATER: x2", "WATER: x3", "WATER: x4", "WATER: x5"},
+     {"SALT: x0", "SALT: x1", "SALT: x2", "SALT: x3" ,"SALT: x4" , "SALT: x5"},
+     {"OIL: x0", "OIL: x1", "OIL: x2", "OIL: x3", "OIL: x4", "OIL: x5"},
+     {"Time: x0", "Time: x1", "Time: x2", "Time: x3", "Time: x4"},
+     {"Ground off", "Ground on"},
+     {"XavierSoft"}
+          #ifdef RESCON
+          ,
+    {"Res: 320x160", "Res: 640x400"},
+     {"Size: 640x480", "Size:1280x880"}
+      #endif
+    };
+
+
+    int menu_count []={1, 1, 1, 1, 1, 1, 0, 0, 0, 0};
+    int menu_max []={7, 6, 6, 6, 6, 5, 2, 1, 2, 2};
 
 
 
