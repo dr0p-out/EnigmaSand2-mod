@@ -304,21 +304,21 @@ void pset(int i){
     int loc=0;
     int loc2=0;
     switch(pixels(i)){
-case 0xffeeddcc:return;
-case 0xff808080:return;
-case 0xff347606://nitro
+case (int)0xffeeddcc:return;
+case (int)0xff808080:return;
+case (int)0xff347606://nitro
     if(random(0.0F, 1.0F)<0.3F && (touching(i, FIRE))>-1){explosion(i); return;}
     if(random(0.0F, 1.0F)<0.2F && (touching(i, FIRE))>-1){pixels(i,FIRE);}
     if(fallingRule(i, true)){ return;}
     if(densityRule(i, OIL, 0.25F)){return;}
     if(densityRule(i, WATER, 0.25F)){return;}
     return;
-case  0xffeecc80://sand
+case  (int)0xffeecc80://sand
 	  if(fallingRule(i, true)){ return;}
 	  if(densityRule(i, WATER, 0.25F)){return;}
 	          	  if(densityRule(i, METH, 0.4F)){return;}
 	  return;
-	case  0xff2020ff: //water
+	case  (int)0xff2020ff: //water
 	  if( combineRule( i, SALT, SALTWATER, 0.25F)){return;}
 	    if(densityRule(i, OIL, 0.25F)){return;}
 	  if( fallingRule(i, true)){return;}
@@ -328,17 +328,17 @@ case  0xffeecc80://sand
 	  if(fallingRule(i, true)){ return;}
 	          	  if(densityRule(i, METH, 0.4F)){return;}
 	  return;
-	case 0xff804040://oil
+	case (int)0xff804040://oil
 	  if( random(0.0F, 1.0F)<0.30F &&(loc=touchingDirect(i, FIRE))!=-1){ doOilFire(i); return;}
 	  if( fallingRule(i, true)){return;}
 	          	  if(densityRule(i, METH, 0.4F)){return;}
 	  return;
-	case 0xff4080ff://salt water
+	case (int)0xff4080ff://salt water
 	  if( fallingRule(i, true)){return;}
 	  if(densityRule(i, WATER, 0.50F)){return;}
 	          	  if(densityRule(i, METH, 0.4F)){return;}
 	  return;
-	case 0xff20cc20://plant
+	case (int)0xff20cc20://plant
 	  if( growRule(i, WATER, 0.50F)){return;}
 	  return;
 	case -49088://fire
@@ -350,38 +350,38 @@ case  0xffeecc80://sand
 	  if( random(0.0F, 1.0F)<0.8F &&(loc=touching(i, WATER))!=-1){pixels(loc,BLANK); pixels(i,BLANK);return;}
 	  if( random(0.0F, 1.0F)<0.5F &&(loc=above(i, BLANK))>-1){ pixels(loc,FIRE);}
 	  return;
-	case 0xffeeddcd://falling cera
+	case (int)0xffeeddcd://falling cera
 	   if( (loc=belowD(i, BLANK))!=-1){ change(i, loc);return;}else{pixels(i,CERA);}
 	  return;
-	case 0xff70a0ff://spout
+	case (int)0xff70a0ff://spout
 	   doSpigot(i, WATER, 0.05F);
 	  return;
-	case 0xff8ba2a2://concrete
+	case (int)0xff8ba2a2://concrete
 		  if(densityRule(i, WATER, 0.35F)){return;}
 		  if(fallingRule3(i, true)){return;}else{
 		  if((belowD(i, WALL)>-1 || adjacent(i, WALL)>-1) && random(0.0F, 1.0F)<0.1F){pixels(i,WALL);}
 		  if(random(0.0F, 1.0F)<0.001){pixels(i,WALL);}
 		  }
 		 return;
-    case 0xffe8a21e://napalm
+    case (int)0xffe8a21e://napalm
 		   if(random(0.0F, 1.0F)<0.25F && (touchingDirect(i, FIRE))>-1){doNapalm(i);}
 		   if(fallingRule(i, true)){return;}//else{doNapalm(i);}
 		           	  if(densityRule(i, METH, 0.4F)){return;}
 		return;
-	case 0xff9d866e://gunpowder
+	case (int)0xff9d866e://gunpowder
 		  if(random(0.0F, 1.0F)<0.95F && (touchingDirect(i, FIRE))>-1){doGunpowder(i);return;}
 		  if(fallingRule(i, true)){return;}
 		          	  if(densityRule(i, METH, 0.4F)){return;}
 		return;
-	case 0xfffaf29c://C-4
+	case (int)0xfffaf29c://C-4
 		  if(random(0.0F, 1.0F)<0.6F && (touchingDirect(i, FIRE))>-1){doC4(i);}
 		return;
-    case 0xff090909://methane
+    case (int)0xff090909://methane
 		   if(random(0.0F, 1.0F)<0.25F && (touchingDirect(i, FIRE))>-1){doNapalm(i);}
         if(risingRule(i, true)){return;}
 
         return;
-    case 0xfff54b0f://torch
+    case (int)0xfff54b0f://torch
   doSpigot2(i, FIRE, 0.25F);
   return;
     }
