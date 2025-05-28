@@ -332,7 +332,7 @@ void drawMenu(void){
 	}
 
 #ifdef RESCON
-void resize(){
+void resize(void){
     viewer = SDL_SetVideoMode(menu_values[9][menu_count[9]], sizheights[menu_count[9]], 32, SDL_HWSURFACE|SDL_DOUBLEBUF);
 
     screen=SDL_CreateRGBSurface(SDL_HWSURFACE,menu_values[8][menu_count[8]], resheights[menu_count[8]], 32,
@@ -368,7 +368,7 @@ setColor(type);
 	}
 
 
-void update(){
+void update(void){
 	   for(int y=sheight; y>=0; y--){
 		     if( (y&1)==1){
 		  for(int x=1; x<width-1; x++){
