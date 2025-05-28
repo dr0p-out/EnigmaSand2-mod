@@ -794,6 +794,8 @@ drawLine(x1, y1, x2, y2, 0);
     //Get offsets
     offset.x = x;
     offset.y = y;
+    offset.w = source->w;
+    offset.h = source->h;
 
     //Blit
     SDL_BlitSurface( source, clip, destination, &offset );
