@@ -75,7 +75,7 @@ class Particle {
 	   switch(type){
 	    case 0:
 	       drawLine((int)(xpos-xvel), (int)(ypos-yvel), xpos, ypos, psize);
-	       if(count%15==0){yvel+=(4.9*(count/15));}
+	       if(count%15==0){yvel+=(4.9*(((float)count)/15));}
 	       if(count%5==0)psize/=1.5;
 	     break;
 	     case 1:

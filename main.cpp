@@ -224,7 +224,7 @@ void drawMenu(void){
 	 location++;
 	}
 
-	if(overRect( 0, mheight, ((resource_n)/5+1)*80, 80, mouseX, mouseY)){
+	if(overRect( 0, mheight, (((float)resource_n)/5+1)*80, 80, mouseX, mouseY)){
 	  int index=(mouseX/80)*5+(mouseY-mheight)/16;
 	  if(index<resource_n){
 	  //if(index<resource_text.length && index>0){
@@ -235,7 +235,7 @@ void drawMenu(void){
 	}else if(mousePressed&&!pmousePressed){
 
 	 int index=(int)(((mouseX-xofset)/90)*5)+(mouseY-mheight)/16;
-	  if(overRect(xofset, mheight, ((menu_n)/5+1)*100, 80, mouseX, mouseY)){
+	  if(overRect(xofset, mheight, (((float)menu_n)/5+1)*100, 80, mouseX, mouseY)){
 	    if(index<menu_n)
 	    menu_count[index]=(menu_count[index]+1)%(menu_max[index]);}
 
