@@ -8,8 +8,8 @@
 #define CUSTOM
 
 #include <ctime>
-#include "SDL.h"
-#include "SDL_ttf.h"
+#include <SDL.h>
+#include <SDL_ttf.h>
 #include "EnigmaSand2.h"
 #include "EnigmaSandDefs.h"
 #include "EnigmaSandParticle.h"

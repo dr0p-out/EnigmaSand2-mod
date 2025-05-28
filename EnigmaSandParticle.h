@@ -1,4 +1,9 @@
-#include "math.h"
+
+#ifdef __cplusplus
+    #include <cmath>
+#else
+    #include <math.h>
+#endif
 
 #define M_PI       3.14159265358979323846
 
