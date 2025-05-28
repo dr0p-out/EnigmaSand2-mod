@@ -403,6 +403,8 @@ bool growRule(int i, int comcolor, float chance){
 	}
 
 	bool risingRule(int i, bool adj){
+		  (void)adj;
+
 		  int loc=belowD(i, BLANK);
 
 		   if( random(0.0F, 1.0F)<0.25F &&( (loc=aboveD(i, BLANK))!=-1||(loc=adjacent(i, BLANK))!=-1)){
@@ -414,6 +416,8 @@ bool growRule(int i, int comcolor, float chance){
 }
 
 bool fallingRule(int i, bool adj){
+		  (void)adj;
+
 		  int loc=belowD(i, BLANK);
 
 		   if( random(0.0F, 1.0F)<0.95F &&( (loc=belowD(i, BLANK))!=-1||(loc=adjacent(i, BLANK))!=-1)){
@@ -425,6 +429,8 @@ bool fallingRule(int i, bool adj){
 }
 
 bool fallingRule3(int i, bool adj){
+	  (void)adj;
+
 	  int loc=0;
 	   if( random(0.0F, 1.0F)<0.95F &&( (loc=belowD(i, BLANK))!=-1||(loc=adjacent(i, BLANK))!=-1)){
 	       change(i, loc);return true;}
