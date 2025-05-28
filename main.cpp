@@ -115,7 +115,6 @@ pmouseY=mouseY;
 quit_no_font:
       SDL_FreeSurface(viewer);
       SDL_FreeSurface(screen);
-      SDL_FreeSurface(message);
       TTF_Quit();
       SDL_Quit();
 
@@ -734,8 +733,10 @@ void fillCirc(int xpos, int ypos, int radius){
 
 
 void drawString(const char* utf, int x, int y){
+      SDL_Surface* message;
+
       message=TTF_RenderText_Solid(font, utf, sdlcolor);
-      if(message==NULL){ printf("image not created");}
+      if(message==NULL){ printf("image not created"); return;}
     apply_surface(x, y, message, drawingsurface);
           SDL_FreeSurface(message);
 }

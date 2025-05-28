@@ -3,7 +3,6 @@
  SDL_Surface* viewer=NULL;
  SDL_Surface* screen=NULL;
  SDL_Surface* drawingsurface=NULL;
-SDL_Surface* message=NULL;
 
 TTF_Font *font;
 Uint16 mouseX, mouseY;
