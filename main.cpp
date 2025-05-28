@@ -16,13 +16,9 @@
 
 
 
-JNIEXPORT void JNICALL Java_EnigmaSand2_initiate(JNIEnv *, jobject){
-beginEnigmaSand();
-  }
+int main(void){
 
-void beginEnigmaSand(void){
-
-    if(SDL_Init(SDL_INIT_VIDEO)==-1){ printf("Error"); return;}
+    if(SDL_Init(SDL_INIT_VIDEO)==-1){ printf("Error"); return 1;}
 atexit(SDL_Quit);
     SDL_WM_SetCaption("EnigmaSand2", "EnigmaSand");
 

@@ -59,8 +59,6 @@ void doOilFire2(int, int);
 int max(int, int);
 int min(int, int);
 
-extern "C" __declspec(dllexport) void beginEnigmaSand(void);
-void beginEnigmaSand(void);
 void processEvents(void);
 void processSand(void);
 void resize(void);
