@@ -17,8 +17,10 @@
 
 
 int main(void){
+    int eframe, bframe;
+    int quitValue;
 
-    if(SDL_Init(SDL_INIT_VIDEO)==-1){ printf("Error"); return 1;}
+    if(SDL_Init(SDL_INIT_VIDEO)==-1){ fprintf(stderr, "Cannot init sdl video\n"); return 1;}
 atexit(SDL_Quit);
     SDL_WM_SetCaption("EnigmaSand2", "EnigmaSand");
 
@@ -40,7 +42,7 @@ atexit(SDL_Quit);
 
 
     TTF_Init();
-    font=TTF_OpenFont("tahoma.ttf", 16);
+    if(!(font=TTF_OpenFont("tahoma.ttf", 16))){ fprintf(stderr, "Cannot open ttf font file\n"); quitValue = 1; goto quit_no_font;}
 
     pmouseX=pmouseY=mouseX=mouseY=0;
     pmousePressed=mousePressed=false;
@@ -64,7 +66,7 @@ atexit(SDL_Quit);
     }
 
 
-int eframe=0, bframe=0;;
+    eframe=0, bframe=0;;
 
 
 while(!quit){
@@ -108,12 +110,16 @@ pmouseY=mouseY;
 
 }
 
+      quitValue=0;
+      TTF_CloseFont(font);
+quit_no_font:
       SDL_FreeSurface(viewer);
       SDL_FreeSurface(screen);
       SDL_FreeSurface(message);
-      TTF_CloseFont(font);
       TTF_Quit();
       SDL_Quit();
+
+      return quitValue;
 }
 
 void processEvents(void){
