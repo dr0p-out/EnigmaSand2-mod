@@ -2,23 +2,21 @@
 #define EnigmaSandParticle_h
 
 class Particle {
-    public:
-	int type;
-	int xpos, ypos;
-	bool active;
-	int strokecolor, fillcolor;
-	int psize;
-	int count;
-	float xvel, yvel;
+public:
+  int type;
+  int xpos, ypos;
+  bool active;
+  int strokecolor, fillcolor;
+  int psize;
+  int count;
+  float xvel, yvel;
 
-	 Particle();
+  Particle();
 
-	 void initiate(int i, int typ);
+  void initiate(int i, int typ);
 
-	 void drawParticle();
-
-	};
-
+  void drawParticle();
+};
 
 extern Particle *particles[1000];
 
