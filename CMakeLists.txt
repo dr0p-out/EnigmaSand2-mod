@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 3.5...4.0)
 project(EnigmaSand2 LANGUAGES CXX)
 
+if(NOT CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+  message(WARNING "c++ compiler is not clang, you may run into errors")
+endif()
+
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -26,21 +30,46 @@ if(ENABLE_UBSAN)
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=undefined")
 endif()
 
+add_compile_definitions(
+  -D_FORTIFY_SOURCE=3
+  -D_GLIBCXX_ASSERTIONS)
 add_compile_options(
   -Wall
   -Wextra
   -Wpedantic
-  -Werror)
+  -Werror
+  -fno-omit-frame-pointer
+  -mno-omit-leaf-frame-pointer
+  -fstack-protector-all
+  -fstack-clash-protection
+  -fcf-protection)
+add_link_options(
+  -Wl,-z,noexecstack
+  -Wl,-z,relro)
 
 find_package(SDL REQUIRED)
 find_package(SDL_ttf REQUIRED)
 
-add_executable(EnigmaSand
+set(PROJECT_SOURCES
   EnigmaSandParticle.cpp
   main.cpp)
-target_include_directories(EnigmaSand PRIVATE
+
+add_library(EnigmaSandDeps INTERFACE)
+target_include_directories(EnigmaSandDeps INTERFACE
   ${SDL_INCLUDE_DIR}
   ${SDLTTF_INCLUDE_DIR})
-target_link_libraries(EnigmaSand PRIVATE
+target_link_libraries(EnigmaSandDeps INTERFACE
   ${SDL_LIBRARY}
   ${SDLTTF_LIBRARY})
+
+add_library(EnigmaSandStaticAnalyze OBJECT
+  ${PROJECT_SOURCES})
+target_compile_options(EnigmaSandStaticAnalyze PRIVATE
+  --analyze)
+target_link_libraries(EnigmaSandStaticAnalyze PRIVATE
+  EnigmaSandDeps)
+
+add_executable(EnigmaSand
+  ${PROJECT_SOURCES})
+target_link_libraries(EnigmaSand PRIVATE
+  EnigmaSandDeps)
